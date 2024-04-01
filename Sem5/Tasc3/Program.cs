@@ -66,7 +66,7 @@ void PrintArray(double[] array)
 }
 
 
-int[,] array2d = CreateMatrixRndInt(4, 3, 1, 10);
+int[,] array2d = CreateMatrixRndInt(10, 10, 12, 100);
 PrintMatrix(array2d);
 
 double[] resultArray = AverageElementsRows(array2d);
