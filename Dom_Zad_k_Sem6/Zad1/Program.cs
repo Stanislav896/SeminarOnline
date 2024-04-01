@@ -1,27 +1,49 @@
-﻿//Задайте произвольную строку.
+﻿// Задача 1: Задайте двумерный массив символов (тип char
+// [,]). Создать строку из символов этого массива. 
 
-// Выясните, является ли она палиндромом.
-
-
-
-Console.WriteLine("Введите строку");
-
-string userInput = Console.ReadLine();
-
-bool palindrome = true;
-
-
-for (int i = 0; i < userInput.Length / 2; i++)
+char[,] CreateMatrixChar(int row, int column)
 {
-    if (userInput[i] != userInput[userInput.Length - i - 1])
+    Random rnd = new Random();
+    char[,] charMatrix = new char[row, column];
+    for (int i = 0; i < charMatrix.GetLength(0); i++)
     {
-        palindrome = false;
-        break;
+        for (int j = 0; j < charMatrix.GetLength(1); j++)
+        {
+            charMatrix[i, j] = (char)rnd.Next('b', 'o' + 1);
+        }
+    }
+    return charMatrix;
+}
+
+void PrintCharMatrix(char[,] charMatrix)
+{
+    for (int i = 0; i < charMatrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < charMatrix.GetLength(1); j++)
+        {
+            Console.Write($"{charMatrix[i, j]}\t");
+        }
+        Console.WriteLine();
     }
 }
 
-Console.WriteLine(palindrome ? "Строка палиндром" : "Строка не палиндром");
+string CharMatrixToString(char[,] charMatrix)
+{
+    string str = "";
+    for (int i = 0; i < charMatrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < charMatrix.GetLength(1); j++)
+        {
+            str += charMatrix[i, j];
+        }
+    }
+    return str;
+}
 
+char[,] charMatrix = CreateMatrixChar(3, 3);
 
+PrintCharMatrix(charMatrix);
 
+string str = CharMatrixToString(charMatrix);
 
+Console.WriteLine(str);
